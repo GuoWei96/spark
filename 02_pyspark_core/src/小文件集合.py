@@ -8,8 +8,6 @@ if __name__ == '__main__':
     conf = SparkConf().setMaster("local[*]").setAppName("create_rdd_testfile")
     sc = SparkContext(conf=conf)
     rdd_init = sc.wholeTextFiles(f"file://{path}/../data/*")
-    rdd_init = 
-    rdd_init =
     # print(f"{path}/../data/words.txt")
     #----------------------------------------------------
     # getNumPartitions 查看分区数量

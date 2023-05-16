@@ -1,6 +1,7 @@
 # 通过外部文件的方式来构建RDD
 from pyspark import SparkContext, SparkConf
 import os
+import time
 path = os.getcwd()
 
 if __name__ == '__main__':
@@ -17,11 +18,14 @@ if __name__ == '__main__':
     #----------------------------------------------------
     # 查看分区后的数据
     print(rdd_init.glom().collect())
-    rdd_init.saveAsTextFile("hdfs://node1:8020/tmp/output")
+    # rdd_init.saveAsTextFile("hdfs://node1:8020/tmp/output")
     # [['kaka kklt', 'kaka kklt'], ['kaka ka']]
 
     rdd_flat = rdd_init.flatMap(lambda line: line.split())
     print(rdd_flat.collect())
+
+    time.sleep(100)
+    sc.stop()
 
 
 #sc.wholeTextFiles尽可能的减少分区数量, 从而减少最终输出到目的文件的数量
