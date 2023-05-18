@@ -24,7 +24,7 @@ if __name__ == '__main__':
     rdd_flat = rdd_init.flatMap(lambda line: line.split())
     print(rdd_flat.collect())
 
-    time.sleep(100)
+        # time.sleep(100)
     sc.stop()
 
 
